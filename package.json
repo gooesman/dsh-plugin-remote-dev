@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "SSH 远程开发插件 for DeepSeek Harness - 支持密码/密钥登录、指纹策略、公钥推送、远程工作区",
   "main": "lib/host/index.js",
-  "types": "lib/host/index.d.ts",
+  "module": "lib/host/index.js",
+  "types": "lib/types/index.d.ts",
   "type": "module",
   "scripts": {
     "build": "node build.js",
     "prepublishOnly": "npm run build",
-    "test": "echo \"No tests yet\""
+    "test": "echo \"No tests yet\" && exit 0",
+    "clean": "rm -rf lib",
+    "prepare": "npm run build",
+    "docs": "echo \"API documentation in API.md\""
   },
   "repository": {
     "type": "git",
@@ -20,7 +24,11 @@
     "cordis",
     "ssh",
     "remote-development",
-    "sftp"
+    "sftp",
+    "remote-server",
+    "ssh-client",
+    "devops",
+    "remote-work"
   ],
   "author": "Gooesman",
   "license": "MIT",
@@ -56,7 +64,10 @@
   "files": [
     "lib",
     "src",
+    "examples",
     "README.md",
+    "API.md",
+    "CHANGELOG.md",
     "LICENSE"
   ]
 }

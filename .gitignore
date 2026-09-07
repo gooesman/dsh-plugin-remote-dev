@@ -4,3 +4,16 @@ lib/
 .DS_Store
 *.tmp
 *.bak
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.env
+.env.local
+.env.*.local
+coverage/
+.nyc_output/
+dist/
+build/
