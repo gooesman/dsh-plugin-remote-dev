@@ -1,0 +1,62 @@
+{
+  "name": "@goosesman/dsh-plugin-remote-dev",
+  "version": "1.0.0",
+  "description": "SSH 远程开发插件 for DeepSeek Harness - 支持密码/密钥登录、指纹策略、公钥推送、远程工作区",
+  "main": "lib/host/index.js",
+  "types": "lib/host/index.d.ts",
+  "type": "module",
+  "scripts": {
+    "build": "node build.js",
+    "prepublishOnly": "npm run build",
+    "test": "echo \"No tests yet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Gooesman/dsh-plugin-remote-dev.git"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "ssh",
+    "remote-development",
+    "sftp"
+  ],
+  "author": "Gooesman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Gooesman/dsh-plugin-remote-dev/issues"
+  },
+  "homepage": "https://github.com/Gooesman/dsh-plugin-remote-dev#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dsh": {
+    "host": {
+      "platform": "node"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-connection",
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-tool",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ]
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "~18.3.1",
+    "react": "^18.2.0"
+  },
+  "files": [
+    "lib",
+    "src",
+    "README.md",
+    "LICENSE"
+  ]
+}
