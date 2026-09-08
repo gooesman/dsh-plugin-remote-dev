@@ -1,5 +1,5 @@
 {
-  "name": "@goosesman/dsh-plugin-remote-dev",
+  "name": "@gooesman/dsh-plugin-remote-dev",
   "version": "1.0.0",
   "description": "SSH 远程开发插件 for DeepSeek Harness - 支持密码/密钥登录、指纹策略、公钥推送、远程工作区",
   "main": "lib/host/index.js",
