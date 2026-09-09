@@ -4,6 +4,16 @@
   "description": "SSH 远程开发插件 for DeepSeek Harness - 支持密码/密钥登录、指纹策略、公钥推送、远程工作区",
   "main": "lib/host/index.js",
   "module": "lib/host/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/types/host/index.d.ts",
+      "default": "./lib/host/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client/index.js"
+    }
+  },
   "types": "lib/types/index.d.ts",
   "type": "module",
   "scripts": {

@@ -3,7 +3,9 @@
  * @module @goosesman/dsh-plugin-remote-dev/host
  */
 
-export function apply(ctx) {
+return {
+  inject: ['timer'],
+  apply(ctx) {
   const sub = ctx.get('subprocess')
   const fs = ctx.get('fs')
   if (sub === undefined || fs === undefined) return
@@ -421,17 +423,17 @@ export function apply(ctx) {
   ctx.effect(() => () => stopAll(), 'remdev:teardown')
 
   // Register internal handlers
-  ctx.harness.handle('status', async () => statusObj())
-  ctx.harness.handle('connect', async (a) => doConnect(a))
-  ctx.harness.handle('disconnect', async () => {
+  harness.handle('status', async () => statusObj())
+  harness.handle('connect', async (a) => doConnect(a))
+  harness.handle('disconnect', async () => {
     const was = config !== null
     stopAll()
     config = null
     lastFingerprint = null
     return { ok: true, wasConnected: was }
   })
-  ctx.harness.handle('set_workspace', async (a) => { a = a || {}; return doSetWs(String(a.path || '').trim()) })
-  ctx.harness.handle('ls', async (a) => {
+  harness.handle('set_workspace', async (a) => { a = a || {}; return doSetWs(String(a.path || '').trim()) })
+  harness.handle('ls', async (a) => {
     a = a || {}
     if (!config) return { ok: false, error: 'not connected', path: null, entries: [] }
     const p = String(a.path || '').trim()
@@ -439,7 +441,7 @@ export function apply(ctx) {
     const lines = (r.stdout || '').split(/\r?\n/).map(s => s.trim()).filter(s => s !== '').slice(0, 500)
     return { ok: r.ok, path: p || null, entries: lines, error: r.ok ? null : lines.join('\n').slice(-400) }
   })
-  ctx.harness.handle('push_key', async (a) => {
+  harness.handle('push_key', async (a) => {
     a = a || {}
     if (!config) return { ok: false, pushed: false, pubKeyPath: null, keyType: null, error: 'not connected' }
     return doPushKey(a.pubKeyPath ? String(a.pubKeyPath) : '')
@@ -451,14 +453,14 @@ export function apply(ctx) {
 
   // Register tools
   function addTool(name, description, parameters, execute, render) {
-    const def = ctx.harness.defineTool({
+    const def = harness.defineTool({
       name,
       description,
       parameters: parameters || {},
       output: { schema: { type: 'json' }, render: render || defRender },
       execute
     })
-    ctx.effect(() => ctx.harness.registerTool(ctx, def), 'tool:' + name)
+    ctx.effect(() => harness.registerTool(ctx, def), 'tool:' + name)
   }
 
   // Tool definitions
@@ -594,7 +596,4 @@ export function apply(ctx) {
   }, async (a) => doPushKey((a && a.pubKeyPath) ? String(a.pubKeyPath) : ''))
 
 }
-
-export default {
-  apply
 }

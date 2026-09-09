@@ -8,7 +8,8 @@
  * talks to the host half through `host.call`.
  */
 
-export function apply(ctx) {
+return {
+  apply(ctx) {
   if (typeof document === 'undefined' || !document.body) return
 
   const css = `.rdevp{position:fixed;top:72px;right:16px;bottom:auto;z-index:10000;width:360px;max-height:80vh;display:flex;flex-direction:column;background:rgba(22,24,28,.96);color:#e8eaf0;border:1px solid rgba(255,255,255,.14);border-radius:10px;box-shadow:0 8px 30px rgba(0,0,0,.45);font-size:12px;overflow:hidden}.rdevpill{position:fixed;top:72px;right:16px;z-index:10000;display:flex;align-items:center;gap:6px;padding:7px 12px;background:rgba(22,24,28,.95);color:#e8eaf0;border:1px solid rgba(255,255,255,.16);border-radius:999px;box-shadow:0 4px 16px rgba(0,0,0,.35);font-size:12px;cursor:pointer;user-select:none}.rdevpill:hover{background:rgba(40,44,52,.98)}.rdevpill .pdot{width:8px;height:8px;border-radius:50%;background:#888}.rdevpill .pdot.on{background:#4caf7d}.rdevh{display:flex;align-items:center;gap:8px;padding:8px 10px;background:rgba(255,255,255,.06);cursor:grab}.rdevh:active{cursor:grabbing}.rdt{font-weight:600;font-size:13px}.rdd{width:8px;height:8px;border-radius:50%;background:#888}.rdd.on{background:#4caf7d}.rdx{margin-left:auto;background:none;border:none;color:#cfd3dc;cursor:pointer;font-size:14px}.rdb{padding:10px;display:flex;flex-direction:column;gap:8px;overflow:auto}.rdr{display:flex;gap:6px;align-items:center}.rdr label{width:40px;flex:none;color:#a8aebc}.rdi{flex:1;min-width:0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:6px;color:#e8eaf0;padding:5px 7px;font-size:12px}.rdmd{display:flex;gap:10px;align-items:center;color:#a8aebc}.rdck{display:flex;gap:6px;align-items:center;color:#a8aebc;cursor:pointer;font-size:11px}.rdbt{background:rgba(86,134,244,.9);border:none;border-radius:6px;color:#fff;padding:6px 14px;cursor:pointer;font-size:12px}.rdbt.sec{background:rgba(255,255,255,.14);color:#e8eaf0}.rdbt:disabled{opacity:.5;cursor:default}.rds{color:#a8aebc;font-weight:600}.rdlg{background:rgba(0,0,0,.35);border-radius:6px;padding:6px 8px;font-family:Consolas,monospace;font-size:11px;max-height:220px;overflow:auto;white-space:pre-wrap;word-break:break-all}.rdlg .e{color:#ff8585}.rdlg .o{color:#7fd6a4}.rden{display:flex;flex-wrap:wrap;gap:4px;max-height:120px;overflow:auto}.rde{background:rgba(255,255,255,.1);border:none;border-radius:4px;color:#dfe3ec;padding:2px 8px;cursor:pointer;font-size:11px}.rde.dir{color:#8fc1ff}`
@@ -314,7 +315,4 @@ export function apply(ctx) {
 
   sync()
 }
-
-export default {
-  apply
 }
